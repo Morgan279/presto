@@ -199,8 +199,8 @@ public abstract class AbstractTestType
                 Block nonNullValue = toBlock(getNonNullValue());
                 assertTrue(ASC_NULLS_FIRST.compareBlockValue(type, block, position, nonNullValue, 0) < 0);
                 assertTrue(ASC_NULLS_LAST.compareBlockValue(type, block, position, nonNullValue, 0) > 0);
-                assertTrue(DESC_NULLS_FIRST.compareBlockValue(type, block, position, nonNullValue, 0) < 0);
-                assertTrue(DESC_NULLS_LAST.compareBlockValue(type, block, position, nonNullValue, 0) > 0);
+                assertTrue(DESC_NULLS_FIRST.compareBlockValue(type, block, position, nonNullValue, 0) > 0);
+                assertTrue(DESC_NULLS_LAST.compareBlockValue(type, block, position, nonNullValue, 0) < 0);
             }
             return;
         }

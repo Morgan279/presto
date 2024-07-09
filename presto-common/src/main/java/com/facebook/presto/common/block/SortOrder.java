@@ -49,17 +49,17 @@ public enum SortOrder
         boolean leftIsNull = leftBlock.isNull(leftPosition);
         boolean rightIsNull = rightBlock.isNull(rightPosition);
 
-        if (leftIsNull && rightIsNull) {
-            return 0;
-        }
+        int result;
         if (leftIsNull) {
-            return nullsFirst ? -1 : 1;
+            result = nullsFirst ? -1 : 1;
         }
-        if (rightIsNull) {
-            return nullsFirst ? 1 : -1;
+        else if (rightIsNull) {
+            result = nullsFirst ? 1 : -1;
+        }
+        else {
+            result = type.compareTo(leftBlock, leftPosition, rightBlock, rightPosition);
         }
 
-        int result = type.compareTo(leftBlock, leftPosition, rightBlock, rightPosition);
         return ascending ? result : -result;
     }
 }
